@@ -1,4 +1,4 @@
-# n0mchem.com
+# 🧠🧪n0mchem.com
 
 **1,000 Grade 11 chemistry nomenclature questions. One page. Black & white. Zero dependencies.**
 
