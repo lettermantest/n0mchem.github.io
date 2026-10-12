@@ -125,22 +125,10 @@ To serve the site from `n0mchem.com`:
 
 ```
 .
-├── index.html            # The entire site — markup, styles, JS, all 1,000 questions
-├── .nojekyll            # Tells Pages to skip Jekyll processing
-├── README.md             # This file
-├── LICENSE               # MIT license
-├── questions.json        # Generated question bank (source data)
-├── index_template.html   # Page shell — questions are injected at build time
-├── inject.py             # Build step: embeds questions.json into index.html
-├── build_final.py        # Question-bank generator (topic-balanced to exactly 1,000)
-└── gen_count.py          # Base question templates
-```
-
-To rebuild after editing the template or bank:
-
-```bash
-python build_final.py   # regenerate questions.json (only if bank logic changed)
-python inject.py        # rebuild index.html
+├── index.html   # The entire site — markup, styles, JS, all 1,000 questions
+├── .nojekyll    # Tells Pages to skip Jekyll processing
+├── README.md    # This file
+└── LICENSE      # MIT license
 ```
 
 ---
@@ -159,10 +147,9 @@ python inject.py        # rebuild index.html
 
 | Goal | Where |
 |---|---|
-| Change styling / rounding / theme | `<style>` block in `index_template.html`, then `python inject.py` |
-| Edit study material | `<details class="material">` section in `index_template.html` |
-| Add or rebalance questions | `build_final.py` / `gen_count.py`, then `python build_final.py && python inject.py` |
-| Change storage key or deck behavior | `<script>` block in `index_template.html` (`KEY`, `shuffled`, `render`) |
+| Change styling / rounding / theme | `<style>` block in `index.html` |
+| Edit study material | `<details class="material">` section in `index.html` |
+| Edit questions or explanations | `QUESTIONS` array in the `<script>` block in `index.html` |
 
 ---
 
@@ -171,9 +158,8 @@ python inject.py        # rebuild index.html
 Issues and pull requests are welcome:
 
 1. Fork the repo and create a feature branch (`git checkout -b fix/oxyacid-typo`).
-2. For content fixes, patch the generator and rebuild (`python build_final.py && python inject.py`).
-3. Verify the bank still totals exactly 1,000 questions (`inject.py` asserts this).
-4. Open a PR with a clear description of the correction.
+2. Make your correction directly in `index.html` (questions live in the `QUESTIONS` array).
+3. Open a PR with a clear description of the correction.
 
 ---
 
